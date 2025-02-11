@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-Hour AI Crash Course</title>
+    <link rel="icon" href="f2.png" type="image/png">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .quiz-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            color: #333;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .quiz-container h1 {
+            font-size: 36px;
+            text-align: center;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+        }
+
+        .progress-bar-container {
+            margin-bottom: 20px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            width: 0;
+            height: 10px;
+            background-color: #2575fc;
+            transition: width 0.5s ease;
+        }
+
+        .score {
+            font-size: 20px;
+            text-align: center;
+            margin: 15px 0;
+            color: #6a11cb;
+        }
+
+        .question-block {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            background-color: #f9f9f9;
+        }
+
+        .question-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .question {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .options {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .options li {
+            margin: 15px 0;
+        }
+
+        .options button {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: #ffffff;
+            color: #333;
+            font-size: 18px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .options button:hover:not(:disabled) {
+            transform: translateX(10px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+        }
+
+        .options button:disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+
+        .options button.correct {
+            background-color: #28a745 !important;
+            color: white !important;
+        }
+
+        .options button.incorrect {
+            background-color: #dc3545 !important;
+            color: #f5f5f5 !important;
+        }
+
+        .next-step {
+            margin-top: 30px;
+            text-align: center;
+            display: none;
+        }
+
+        .next-step button {
+            padding: 12px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .next-step button:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-container {
+                margin: 20px;
+                padding: 20px;
+            }
+
+            .quiz-container h1 {
+                font-size: 28px;
+            }
+
+            .question {
+                font-size: 20px;
+            }
+
+            .options button {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container" id="quiz">
+        <h1>AI Fundamentals Quiz</h1>
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div class="score" id="score">Score: 0</div>
+        <div id="quiz-content">
+            <!-- Questions loaded dynamically -->
+        </div>
+        <div class="next-step" id="next-step">
+            <p>Congratulations! You've completed the Quiz 🎉</p>
+            <button>Continue to Next Module →</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+       
+            {
+                question: "What is a chatbot?",
+                options: [
+                    "An AI-powered assistant that answers questions",
+                    "A hardware tool for websites",
+                    "A type of AI-powered vehicle",
+                    "A search engine for AI"
+                ],
+                correct: 0
+            },
+            {
+                question: "Which of the following is an example of a virtual assistant?",
+                options: ["Siri", "YouTube", "TikTok", "Netflix"],
+                correct: 0
+            },
+            {
+                question: "How does AI personalize your Netflix recommendations?",
+                options: [
+                    "By guessing your preferences",
+                    "By analyzing your viewing history",
+                    "By tracking your GPS location",
+                    "By asking other users"
+                ],
+                correct: 1
+            },
+            {
+                question: "What role does AI play in healthcare?",
+                options: [
+                    "Diagnosing diseases faster",
+                    "Driving patients to the hospital",
+                    "Cooking food for doctors",
+                    "Painting hospital walls"
+                ],
+                correct: 0
+            },
+            {
+                question: "Which industry uses AI to detect fraud?",
+                options: ["Finance", "Healthcare", "Retail", "Education"],
+                correct: 0
+            },
+            {
+                question: "What powers self-driving cars?",
+                options: [
+                    "AI systems for navigation and object recognition",
+                    "Manual controls",
+                    "Fuel-based engines",
+                    "Advanced brakes only"
+                ],
+                correct: 0
+            },
+            {
+                question: "How does AI enhance online shopping experiences?",
+                options: [
+                    "By suggesting products based on buying behavior",
+                    "By randomly suggesting items",
+                    "By altering product prices",
+                    "By displaying the same items repeatedly"
+                ],
+                correct: 0
+            },
+            {
+                question: "What is an example of AI in entertainment?",
+                options: [
+                    "Recommending music playlists on Spotify",
+                    "Diagnosing diseases",
+                    "Operating traffic lights",
+                    "Sorting books by genre"
+                ],
+                correct: 0
+            },
+            {
+                question: "How does AI detect fraud in banks?",
+                options: [
+                    "By monitoring unusual spending patterns",
+                    "By freezing all accounts",
+                    "By interviewing customers",
+                    "By blocking all transactions"
+                ],
+                correct: 0
+            },
+            {
+                question: "What does AI do in self-driving cars?",
+                options: [
+                    "Navigates roads and follows traffic rules",
+                    "Fuels the car",
+                    "Manages entertainment systems",
+                    "Designs the car interior"
+                ],
+                correct: 0
+            }
+       
+
+            // Add your question objects here
+        ];
+
+        const quizContent = document.getElementById('quiz-content');
+        const nextStep = document.getElementById('next-step');
+        const progressBar = document.getElementById('progress-bar');
+        const scoreDisplay = document.getElementById('score');
+
+        let currentScore = 0;
+        let answeredQuestions = 0;
+
+        function initializeQuiz() {
+            questions.forEach((q, index) => {
+                const questionBlock = document.createElement('div');
+                questionBlock.className = 'question-block';
+                
+                questionBlock.innerHTML = `
+                    <p class="question">${index + 1}. ${q.question}</p>
+                    <ul class="options">
+                        ${q.options.map((opt, i) => `
+                            <li>
+                                <button data-index="${i}">${opt}</button>
+                            </li>
+                        `).join('')}
+                    </ul>
+                `;
+
+                const buttons = questionBlock.querySelectorAll('button');
+                buttons.forEach(btn => {
+                    btn.addEventListener('click', () => handleAnswer(btn, q.correct, questionBlock));
+                });
+
+                quizContent.appendChild(questionBlock);
+            });
+        }
+
+        function handleAnswer(selectedButton, correctIndex, questionBlock) {
+            const buttons = questionBlock.querySelectorAll('button');
+            buttons.forEach(btn => btn.disabled = true);
+
+            const selectedIndex = parseInt(selectedButton.dataset.index);
+            
+            if (selectedIndex === correctIndex) {
+                selectedButton.classList.add('correct');
+                currentScore++;
+            } else {
+                selectedButton.classList.add('incorrect');
+                showCorrectAnswer(questionBlock, correctIndex);
+            }
+
+            answeredQuestions++;
+            updateProgressBar();
+            updateScore();
+            checkCompletion();
+        }
+
+        function showCorrectAnswer(questionBlock, correctIndex) {
+            const correctButton = questionBlock.querySelectorAll('button')[correctIndex];
+            correctButton.classList.add('correct');
+        }
+
+        function updateProgressBar() {
+            const progress = (answeredQuestions / questions.length) * 100;
+            progressBar.style.width = progress + '%';
+        }
+
+        function updateScore() {
+            scoreDisplay.textContent = `Score: ${currentScore}`;
+        }
+
+        function checkCompletion() {
+            if (answeredQuestions === questions.length) {
+                nextStep.style.display = 'block';
+                nextStep.querySelector('button').addEventListener('click', () => {
+                    alert(`Your final score: ${currentScore}/${questions.length}`);
+                    window.location.href = "Machine Learning.html";
+                });
+            }
+        }
+
+        initializeQuiz();
+    </script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-Hour AI Crash Course</title>
+    <link rel="icon" href="f2.png" type="image/png">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .course-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            color: #333;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.2s ease-out;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 28px;
+            text-align: center;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .course-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .course-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            color: #000;
+        }
+
+        .course-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #6a11cb;
+            margin-bottom: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .course-title:hover {
+            color: #2575fc;
+            text-shadow: 0 0 10px #2575fc;
+        }
+        .section-link {
+    text-decoration: none;
+    color: #007bff; /* Blue link color */
+    font-weight: bold;
+}
+
+.section-link:hover {
+    color: #0056b3; /* Darker blue on hover */
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+        .tooltip {
+            display: none;
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .course-title:hover .tooltip {
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 15px;
+        }
+
+        ul li::before {
+            content: "✔";
+            color: #2575fc;
+            margin-right: 8px;
+        }
+
+        .quiz-note {
+            font-size: 14px;
+            color: #e74c3c;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .button {
+            display: inline-block;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            margin-top: 15px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            border: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="course-container">
+    <h1><h1>Master AI Concepts in Just 2 Hours with Our Crash Course!</h1>
+</h1>
+
+    <div class="course-section">
+        <h2 class="course-title">
+            <a href="introduction.html" class="section-link">1. Introduction to AI</a>
+            <span class="tooltip">Learn the basics of AI!</span>
+        </h2>
+        <p>Topics Covered:</p>
+        <ul>
+            <li>What is AI?</li>
+            <li>Brief History of AI</li>
+            <li>Applications of AI</li>
+            <li>Quiz</li>
+        
+        </ul>
+        <p class="quiz-note">Note: Complete the quiz to unlock the next section.</p>
+    </div>
+
+    <div class="course-section">
+        <h2 class="course-title">
+            <a href="Machine Learning.html" class="section-link">2. What is Machine Learning?</a>
+           
+            <span class="tooltip">Understand Machine Learning concepts!</span>
+        </h2>
+        <p>Topics Covered:</p>
+        <ul>
+            <li>Deep Learning</li>
+            <li>Key Algorithms in ML</li>
+            <li>Quiz</li>
+        </ul>
+        
+    </div>
+
+    <div class="course-section">
+        <h2 class="course-title">
+            <a href="Real-World Applications.html" class="section-link">3. Real-World Applications of AI</a>
+           
+            <span class="tooltip">Explore where AI is used in real life!</span>
+        </h2>
+        <p>Topics Covered:</p>
+        <ul>
+            <li>Smart Helpers</li>
+            <li>Personalized Experiences</li>
+            <li>Super Savers</li>
+            <li>Game Changers</li>
+            <li>Quiz</li>
+        </ul>
+    </div>
+
+    <div class="course-section">
+        <h2 class="course-title">
+            <a href="Project.html" class="section-link"> 4. Project</a>
+           
+            <span class="tooltip">Apply your skills with a hands-on project!</span>
+        </h2>
+        <p>Work on a hands-on project to apply your AI knowledge.</p>
+    </div>
+
+    <div class="course-section">
+        <h2 class="course-title">
+            
+            <a href="Reward.html" class="section-link"> 5. Reward</a>
+            <span class="tooltip">Get exclusive resources and guides!</span>
+        </h2>
+        <p>Upon completion, receive free resources on:</p>
+        <ul>
+            <li>Aptitude</li>
+            <li>DSA</li>
+            <li>Logical Building</li>
+            <li>Resume Tips for ATS</li>
+        </ul>
+    </div>
+
+    
+</div>
+
+</body>
+</html>

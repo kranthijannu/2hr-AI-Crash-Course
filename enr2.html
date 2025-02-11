@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-Hour AI Crash Course</title>
+    <link rel="icon" href="f2.png" type="image/png">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .course-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            color: #333;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.2s ease-out;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 28px;
+            text-align: center;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .course-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .course-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            color: #000;
+        }
+
+        .course-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #6a11cb;
+            margin-bottom: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .course-title:hover {
+            color: #2575fc;
+            text-shadow: 0 0 10px #2575fc;
+        }
+
+        .section-link {
+            text-decoration: none;
+            color: #007bff; /* Blue link color */
+            font-weight: bold;
+        }
+
+        .section-link:hover {
+            color: #0056b3; /* Darker blue on hover */
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .tooltip {
+            display: none;
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .course-title:hover .tooltip {
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 15px;
+        }
+
+        ul li::before {
+            content: "✔";
+            color: #2575fc;
+            margin-right: 8px;
+        }
+
+        .quiz-note {
+            font-size: 14px;
+            color: #e74c3c;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .button {
+            display: inline-block;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            margin-top: 15px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            border: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #ff7eb3, #ff758c);
+        }
+        .loading-screen {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            z-index: 1000;
+            /* Flex properties moved here */
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+
+      
+
+        .loading-screen h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .ai-loading {
+            width: 50px;
+            height: 50px;
+            border: 6px solid #fff;
+            border-top-color: #6a11cb;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <h1>Loading your AI Crash Course...</h1>
+        <div class="ai-loading"></div>
+    </div>
+
+    <div class="course-container">
+        <h1>2-Hour AI Crash Course</h1>
+        <div class="course-section">
+            <div class="course-title">
+                Introduction to AI
+                <span class="tooltip">Learn about the basics of AI!</span>
+            </div>
+            <p>Understand what AI is, its history, and its applications in various industries.</p>
+        </div>
+        <div class="course-section">
+            <div class="course-title">
+                Machine Learning Overview
+                <span class="tooltip">A quick dive into ML!</span>
+            </div>
+            <p>Explore the core concepts of machine learning and how it's different from AI.</p>
+        </div>
+        <div class="cta">
+            <a href="#" class="button" onclick="startCourse()">Start Course Now</a>
+        </div>
+    </div>
+
+    <script>
+        // Show loading screen and redirect to roadmap
+        function startCourse() {
+            const loadingScreen = document.getElementById("loadingScreen");
+            loadingScreen.style.display = "flex"; // Changed to flex display
+            setTimeout(() => {
+                window.location.href = "roadmap.html";
+            }, 3000); // 3000ms = 3 seconds
+        }
+
+    </script>
+</body>
+</html>

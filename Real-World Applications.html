@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-Hour AI Crash Course</title>
+    <link rel="icon" href="f2.png" type="image/png">
+    <style>
+        * { margin: 0;
+             padding: 0; 
+             box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9; 
+            /* background: linear-gradient(135deg, #6a11cb, #2575fc); */
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+      
+        .left-nav {
+            /* background: linear-gradient(135deg, #6a11cb, #2575fc); */
+            background: linear-gradient(135deg, #6a11cb, #2575fc); 
+        width: 100%;
+        padding: 20px;
+        border-radius: 5px;
+        /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); */
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    .left-nav a{
+        color: #3498db; /
+       
+        text-decoration: none;
+    }
+
+    .left-nav button {
+        display: inline-block;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            margin-top: 15px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            border: none;
+            cursor: pointer;
+            
+       
+    }
+
+    .left-nav button:hover {
+        transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            color: #000;
+    }
+
+    .left-nav a {
+        text-decoration: none;
+        color: white;
+    }
+    .left-nav a:hover {
+        text-decoration: none;
+        color: black;
+    }
+
+    /* Right Content Area */
+    .right-content {
+        background: linear-gradient(135deg, #6a11cb, #2575fc); 
+        color: #333;
+        flex: 1;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgb(143, 81, 148);
+        margin: 20px;
+        overflow-y: auto;
+    }
+
+    .right-content h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+        text-align: center;
+        color:#ffffff;
+    }
+.right-content h1:hover{
+    color: #ffffff; /* Darker blue on hover */
+    
+    cursor: pointer;
+}
+
+.right-content p{
+    background-color:  #ffffff;;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            color:#131313;
+            box-shadow: 0 4px 10px rgba(23, 23, 23, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+            font-size: 20px;
+           text-align: justify;
+            
+        }
+        .right-content:hover p{
+            transform: translateY(-5px);
+           
+            /* background: linear-gradient(to right, #ffecd2, #fcb69f);
+            color: #000; */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            color: #000;
+
+     }
+    ol {
+        background-color:  #ffffff;;
+            margin-bottom: 10px;
+            padding:40px;
+            border-radius: 8px;
+            color:#131313;
+            box-shadow: 0 4px 10px rgba(23, 23, 23, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+            font-size: 20px;
+           text-align: justify;
+
+    }
+    ul{
+        background-color:  #ffffff;;
+            margin-bottom: 10px;
+            padding:40px;
+            border-radius: 8px;
+        color:#000;
+    }
+    ul :hover{
+        background: linear-gradient(to right, #ffecd2, #fcb69f);
+            color: #000;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+
+    @media (min-width: 768px) {
+        body {
+            flex-direction: row;
+        }
+
+        .left-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh; /* Full viewport height */
+        width: 25%;
+        overflow-y: auto; /* Scrollbar only for nav if content overflows */
+        padding: 20px 10px; /* Reduced horizontal padding */
+    }
+
+    /* Right Content - Add margin to avoid overlap */
+    .right-content {
+        margin-left: 25%; /* Match nav width */
+        width: 75%; /* Occupy remaining space */
+        height: 100vh; /* Full viewport height */
+        overflow-y: auto; /* Enable scrolling for content */
+        margin-top: 0; /* Remove top margin */
+    }
+        .left-nav button {
+            margin: 10px 0;
+            flex: none;
+        }
+
+      
+
+       
+    }
+    </style>
+</head>
+<body>
+    
+    <!-- Left Navigation -->
+    <div class="left-nav">
+        <button onclick="showContent('default')">Real-World Applications of AI</button>
+        <button onclick="showContent('Smart Helpers')">Smart Helpers</button>
+        <button onclick="showContent('Recommendations & Entertainment')">Personalized Experiences</button>
+        <button onclick="showContent('Super Savers')">Super Savers</button>
+        <button onclick="showContent('Game Changers')"> Game Changers</button>
+        <button><a href="quiz3.html">  Quiz</a></button>
+        <button><a href="Project.html">Project</a></button>
+        <button><a href="introduction.html">Go to First Module</a></button>
+        <button><a href="Machine Learning.html">Go to 2nd Module</a></button>
+       
+    </div>
+
+    <!-- Right Content -->
+    <div class="right-content" id="content">
+        <!-- Default Content -->
+        <h1>Welcome!</h1>
+        <p>Explore 'Real-World Applications of AI' to learn more about it.</p>
+        <img src="app.jpeg" alt="AI" style="display: block; margin: 10px auto 0; max-width: 80%; height: auto; border-radius: 8px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+    </div>
+
+    <script>
+        // Function to dynamically update content
+        function showContent(section) {
+            const content = document.getElementById('content');
+            if (section === 'default') {
+                content.innerHTML = `
+<h1>Real-World Applications of AI: Simplified & Exciting<h1>
+    <p>Artificial Intelligence (AI) is everywhere! From helping us chat with virtual assistants to making self-driving cars a reality, AI makes life smarter, easier, and cooler. </p>
+    <img src="app2.jpeg" alt="AI" style="display: block; margin: 10px auto 0; max-width: 80%; height: auto; border-radius: 8px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">           
+    
+    `;
+            } 
+             else if (section === 'Smart Helpers') {
+                content.innerHTML = `
+                <h1>Smart Helpers: Chatbots & Virtual Assistants</h1>
+                <p>AI acts like a super-smart friend or assistant who’s always ready to help!</p>
+                <ol>
+            <li><strong>Chatbots:</strong> These AI-powered helpers pop up when you visit websites and answer your questions instantly. 
+                Whether it’s booking a flight or tracking your delivery, chatbots make it quick and easy.</li>
+                <p><strong>Example:</strong> Asking a chatbot, “Where’s my package?” and it gives you real-time updates.</p>
+            <li><strong>Virtual Assistants:</strong> Meet Siri, Alexa, and Google Assistant!
+                 These voice-powered AIs can set reminders, play your favorite songs, 
+                 or even control smart home devices with just your voice.</li>
+            <p ><strong>Example:</strong> Saying, “Hey Alexa, turn off the lights,” and voilà, your room goes dark!</p>
+
+</ol>
+
+ `;
+  } else if(section === 'Recommendations & Entertainment') {
+                content.innerHTML = `
+                   <h2> Personalized Experiences: Recommendations & Entertainment</h2>
+                   <p>Ever wondered how Netflix knows exactly what you want to watch, or why Spotify plays the perfect playlist? That’s AI magic!</p>
+  <ol>
+            <li><strong>Recommendation Systems:</strong> AI learns your preferences and suggests things you’ll love, whether it’s movies, music, or even online shopping deals.</li>
+            <ul>
+                <p><strong>Example:</strong> Netflix recommending “Stranger Things” because you enjoyed “The Witcher.”</p>
+                </ul>
+            <li><strong>Entertainment:</strong> Platforms like YouTube and TikTok use AI to serve you videos tailored to your interests. It’s why your feed feels like it’s reading your mind!</li>
+            
+</ol>
+                `;
+        } else if (section === 'Super Savers') {
+            content.innerHTML = `
+            <h2>Super Savers: Healthcare & Fraud Detection</h2>
+            <p>  AI is saving lives and protecting wallets with its amazing powers!</p>
+            <ol>
+                <li><strong>Healthcare:</strong> I helps doctors diagnose diseases faster and more accurately. It scans medical images, predicts potential health issues, and even suggests treatments.</li>
+                <ul>
+                    <p><strong>Example:</strong> AI  identifying early signs of cancer from an X-ray, giving patients a better chance at recovery.</p>
+                </ul>
+                <li><strong>Fraud Detection:</strong> Banks use AI to keep your money safe by spotting suspicious activity, like unusual purchases from far-off places.</li>
+                <ul>
+<p ><strong>Example:</strong> AI freezing your credit card when it detects a sudden purchase in another country.</p>
+            </ul>
+            </ol>
+
+            `;
+
+    } else if(section =='Game Changers') {
+        content.innerHTML = `
+        <h2>Game Changers: Self-Driving Cars & Retail</h2>
+        
+        <p >AI is transforming the way we travel and shop, making everything smoother and smarter.</p>
+        <ol>
+            <li><strong>Self-Driving Cars:</strong> Imagine a car that drives itself! AI powers vehicles to navigate roads, recognize pedestrians, and follow traffic rules—all without human help.</li>
+            <p ><strong>Example:</strong> Tesla’s AI-powered cars that can park themselves or drive you home.</p>
+            <li><strong>Retail:</strong> hopping gets a tech boost with AI! It suggests outfits based on your style, ensures your favorite products are in stock, and makes online shopping more personal.</li>
+            <p><strong>Example:</strong> An app recommending jackets because it’s winter and you recently bought boots.</p>
+        </ol>
+
+        `;}
+
+}
+    </script>
+</body>
+</html>
